@@ -1,0 +1,18 @@
+{
+  "name": "swurl",
+  "version": "0.1.0",
+  "description": "Validate requests against Swagger definitions",
+  "main": "index.js",
+  "bin": { "swurl": "cli.js" },
+  "scripts": { "test": "node test/request.js" },
+  "author": "Marcus Zanona <zanona@me.com>",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/zanona/swurl.git"
+  },
+  "dependencies": {
+    "commander": "^2.9.0",
+    "sway": "git://github.com/apigee-127/sway.git"
+  }
+}

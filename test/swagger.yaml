@@ -1,0 +1,48 @@
+swagger: '2.0'
+info:
+  version: '0.1.0'
+  title: Swagger API
+schemes: [https]
+consumes: [application/json]
+produces: [application/json]
+responses: &responses
+  400:
+    description: '400 Bad request'
+    schema: { $ref: '#/definitions/Error' }
+  500:
+    description: '500 Internal server error'
+    schema: { $ref: '#/definitions/Error' }
+paths:
+  /user/{id}:
+    post:
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+        - name: test
+          in: query
+          required: true
+          type: string
+        - name: User
+          in: body
+          required: true
+          schema: { $ref: '#/definitions/User' }
+      responses:
+        << : *responses
+        200:
+          description: '200 OK'
+          schema: { $ref: '#/definitions/User' }
+definitions:
+  Error:
+    type: object
+    properties:
+      status:  { type: integer }
+      type:    { type: string  }
+      message: { type: string  }
+  User:
+    type: object
+    properties:
+      name: { type: string }
+      age:  { type: integer, maximum: 10 }
+    required: [name]
